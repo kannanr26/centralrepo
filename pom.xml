@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.centralrepo.sample</groupId>
+  <artifactId>centralrepo</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>centralrepo</name>
+
+<dependencyManagement>
+    <dependencies>
+     <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.1.0</version>
+      </dependency>
+
+    </dependencies>
+    
+</dependencyManagement>
+<distributionManagement>
+    <repository>
+        <url>https://github.com/kannanr26/maven-repo.git/mvn-repo</url>
+    </repository>
+	</distributionManagement>
+
+<build>
+	<plugins>
+    <plugin>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.8.1</version>
+        <configuration>
+            <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
+        </configuration>
+    </plugin>
+	</plugins>
+	</build>
+</project>
